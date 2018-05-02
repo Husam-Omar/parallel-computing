@@ -1,0 +1,25 @@
+we read the image and store it in an input matrix of integers
+copy the frame of the image to output matrix
+apply the calculations to the inner pixels and store the result to the output matrix
+write the output matrix to output file
+
+The serial:
+[usage] ./serial orignalImage mask outputImage
+execution time is 0.04527
+
+The parallel:
+added '#pragma omp parallel for' to the serial code
+compile with -fopenmp option
+[usage] ./parallel orignalImage mask outputImage numThreads
+the machine has 3 cores
+time for 1 thread: 0.0464301
+time for 2 thread: 0.047291
+time for 3 thread: 0.0477049
+time for 4 thread: 0.0458598
+
+we notice that the time of the serial code is less than the time of parallel for all number of threads.
+so the serial is faster than the parallel.
+
+for parallel:
+when incresed number of threads from 1 to 3 exection time increased. it got slower.
+except for 4 threads which equals the number of cores it was faster than the parallel with single thread and slower than the serial.

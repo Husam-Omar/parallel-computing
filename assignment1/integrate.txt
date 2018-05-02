@@ -1,0 +1,32 @@
+fucc.cpp: is the file that contains the function that we want to compute its integral
+we pass the interval of the intrgral through command line arguments
+command line arguments:
+1- a: the start of the interval
+2- b: the end of the interval
+3- n: the number of trapezoids 
+
+integrate.cpp:
+  it is a serial code that computes using one process.
+
+mpi_integrate_v1.cpp: 
+  parallel implementation with point to point communication 
+  the master process is process 0
+  each process calculates its local a,b and computes the integral of its interval then send the result to p0
+	p0 adds the results from the other processes and from itself as well then prints the result
+	also each process has local n which is the orginal n divided by the numer of processes.
+	the master process recieve the local integral from the other processes in sequentioal order : p1 the p2 then p3 ...
+
+mpi_integrate_v2.cpp:
+	it's the same as v1 except the master process(p0) recieves from any other process in any time (a random way)
+	it could recieve from p2 the p1 then p3 ...
+	so "MPI_ANY_SOURCE" is used instead of spicifing the process number that would recieve from
+	-the first process finish computation and sends to p0, p0 will first recieve from it-
+
+mpi_integrate_v3.cpp: 
+	unlike v1 and v2, there is no master process.
+	each process computes its local integral,then:
+			MPI_Reduce(&integral,&total,1,MPI_FLOAT,MPI_SUM,0,MPI_COMM_WORLD);
+  is used
+	it takes local integrals of the process (integeal) add them together, store the reslut in (total) in the root procces p0
+	"MPI_SUM" is used to add them after reduction.
+	

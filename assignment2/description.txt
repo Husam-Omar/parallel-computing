@@ -1,0 +1,22 @@
+1)entered n -the number that we want to find all prime numbers less or equal to it- from command line arguments.
+a loop from 3 (if n>n) to the square root of n to check if the number is prime.
+
+2)the loop ends in the square root of n not to n it self,because of
+if n is not prime it has factors a,b
+if a and b bigger than the square root of n
+then a*b>n
+
+3)
+x=n/p 
+iteration start:the rank of the process multiplied by x, then 1 is added  : rank*x+1
+iteration end: add x-1 to iteration start : (rank+1)*x
+for (int i=iteration start;i<=iteration end;step by 2)
+
+4)
+a the loop from 3 to n 
+take the number mod p and the result is the process rank that would compute if the number is prime
+for (int i=3;i<=n;i+=2)
+    if(i%size==rank)
+	if( isPrime (i) )
+
+5)

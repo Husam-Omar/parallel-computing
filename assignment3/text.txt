@@ -1,0 +1,4 @@
+busy waiting the threads accsess the critical section in order using the flag but wastes cpu cycles.
+mutex doesn't waste cpu cycles but there os no order of accsessing the critical section.
+semaphore doesn't waste cpu cycles,and it can control the accsess of the critical section.
+
